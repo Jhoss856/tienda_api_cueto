@@ -9,7 +9,19 @@ class Products extends Model
 {
     /** @use HasFactory<\Database\Factories\ProductsFactory> */
     use HasFactory;
-    public function category(){
-        return $this->belongTo(category::class,'categories_id');
+
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock'
+    ];
+
+    public function Category(){
+        return $this->belongTo(Category::class,"Categories_id");
+    }
+
+    public function Orders(){
+        return $this->belongTo(Orders::class,"Orders_id");
     }
 }
